@@ -1,4 +1,3 @@
-#[derive(Debug, Copy, Clone)]
 pub struct Card(u8);
 
 impl Card {
@@ -6,7 +5,7 @@ impl Card {
     Card((rank << 4) + suit)
   }
 
-  pub fn rank(self) -> u8 { self.0 >> 4 }
-  pub fn suit(self) -> u8 { self.0 & 0x0F }
-  pub fn index(self) -> u8 { self.suit() * 13 + self.rank() }
+  pub fn rank(&self) -> u8 { self.0 >> 4 }
+  pub fn suit(&self) -> u8 { self.0 & 0x0F }
+  pub fn index(&self) -> u8 { self.rank() + (self.suit() * 13) }
 }
