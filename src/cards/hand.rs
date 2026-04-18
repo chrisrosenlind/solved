@@ -1,3 +1,1 @@
-struct Hands {
-  
-}
+struct Hands {}
