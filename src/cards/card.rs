@@ -7,6 +7,7 @@ pub enum Suit {
     Hearts = 2,
     Spades = 3,
 }
+
 #[allow(dead_code)]
 pub enum Rank {
     Two = 0,
