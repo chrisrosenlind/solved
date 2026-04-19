@@ -1,1 +1,1 @@
-struct Hands {}
+pub struct Hand {}

@@ -1,1 +1,1 @@
-struct Deck {}
+pub struct Deck {}
