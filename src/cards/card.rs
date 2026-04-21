@@ -1,6 +1,5 @@
-pub struct Card(u8);
-
 #[allow(dead_code)]
+#[derive(Debug)]
 pub enum Suit {
     Clubs = 0,
     Diamonds = 1,
@@ -9,6 +8,7 @@ pub enum Suit {
 }
 
 #[allow(dead_code)]
+#[derive(Debug)]
 pub enum Rank {
     Two = 0,
     Three = 1,
@@ -25,13 +25,36 @@ pub enum Rank {
     Ace = 12,
 }
 
+impl From<u8> for Rank {
+    fn from(v: u8) -> Self {
+        match v {
+            0 => Rank::Two,
+            1 => Rank::Three,
+            2 => Rank::Four,
+            3 => Rank::Five,
+            4 => Rank::Six,
+            5 => Rank::Seven,
+            6 => Rank::Eight,
+            7 => Rank::Nine,
+            8 => Rank::Ten,
+            9 => Rank::Jack,
+            10 => Rank::Queen,
+            11 => Rank::King,
+            12 => Rank::Ace,
+            _ => panic!("Invalid rank"),
+        }
+    }
+}
+
+pub struct Card(u8);
+
 impl Card {
     pub fn new(rank: Rank, suit: Suit) -> Self {
         Card(((rank as u8) << 4) + (suit as u8))
     }
 
-    pub fn rank(&self) -> u8 {
-        self.0 >> 4
+    pub fn rank(&self) -> Rank {
+        Rank::from(self.0 >> 4)
     }
 
     pub fn suit(&self) -> u8 {
@@ -39,6 +62,6 @@ impl Card {
     }
 
     pub fn index(&self) -> u8 {
-        self.rank() + (self.suit() * 13)
+        (self.0 >> 4) + ((self.0 & 0x0F) * 13)
     }
 }
