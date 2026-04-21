@@ -26,8 +26,8 @@ pub enum Rank {
 }
 
 impl From<u8> for Rank {
-    fn from(v: u8) -> Self {
-        match v {
+    fn from(value: u8) -> Rank {
+        match value {
             0 => Rank::Two,
             1 => Rank::Three,
             2 => Rank::Four,
@@ -46,10 +46,22 @@ impl From<u8> for Rank {
     }
 }
 
+impl From<u8> for Suit {
+    fn from(value: u8) -> Suit {
+        match value {
+            0 => Suit::Clubs,
+            1 => Suit::Diamonds,
+            2 => Suit::Hearts,
+            3 => Suit::Spades,
+            _ => panic!("Invalid suit"),
+        }
+    }
+}
+
 pub struct Card(u8);
 
 impl Card {
-    pub fn new(rank: Rank, suit: Suit) -> Self {
+    pub fn new(rank: Rank, suit: Suit) -> Card {
         Card(((rank as u8) << 4) + (suit as u8))
     }
 
@@ -57,8 +69,8 @@ impl Card {
         Rank::from(self.0 >> 4)
     }
 
-    pub fn suit(&self) -> u8 {
-        self.0 & 0x0F
+    pub fn suit(&self) -> Suit {
+        Suit::from(self.0 & 0x0F)
     }
 
     pub fn index(&self) -> u8 {
