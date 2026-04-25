@@ -58,6 +58,7 @@ impl From<u8> for Suit {
     }
 }
 
+#[derive(Debug)]
 pub struct Card(u8);
 
 impl Card {
