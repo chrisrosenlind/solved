@@ -8,8 +8,8 @@ pub struct Deck {
 impl Deck {
     pub fn new() -> Deck {
         let mut cards = Vec::with_capacity(52);
-        for suit in 1..5u8 {
-            for rank in 2..15u8 {
+        for suit in 0..4u8 {
+            for rank in 0..13u8 {
                 cards.push(Card::new(Rank::from(rank), Suit::from(suit)))
             }
         }
