@@ -7,7 +7,7 @@ pub struct Hand {
 }
 
 impl Hand {
-    pub fn new(card1: Card, card2: Card) -> Self {
+    pub fn new(card1: Card, card2: Card) -> Hand {
         Hand { card1, card2 }
     }
 }

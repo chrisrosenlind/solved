@@ -1,46 +1,46 @@
 #[allow(dead_code)]
 #[derive(Debug)]
 pub enum Suit {
-    Clubs = 0,
-    Diamonds = 1,
-    Hearts = 2,
-    Spades = 3,
+    Clubs = 1,
+    Diamonds = 2,
+    Hearts = 3,
+    Spades = 4,
 }
 
 #[allow(dead_code)]
 #[derive(Debug)]
 pub enum Rank {
-    Two = 0,
-    Three = 1,
-    Four = 2,
-    Five = 3,
-    Six = 4,
-    Seven = 5,
-    Eight = 6,
-    Nine = 7,
-    Ten = 8,
-    Jack = 9,
-    Queen = 10,
-    King = 11,
-    Ace = 12,
+    Two = 2,
+    Three = 3,
+    Four = 4,
+    Five = 5,
+    Six = 6,
+    Seven = 7,
+    Eight = 8,
+    Nine = 9,
+    Ten = 10,
+    Jack = 11,
+    Queen = 12,
+    King = 13,
+    Ace = 14,
 }
 
 impl From<u8> for Rank {
     fn from(value: u8) -> Rank {
         match value {
-            0 => Rank::Two,
-            1 => Rank::Three,
-            2 => Rank::Four,
-            3 => Rank::Five,
-            4 => Rank::Six,
-            5 => Rank::Seven,
-            6 => Rank::Eight,
-            7 => Rank::Nine,
-            8 => Rank::Ten,
-            9 => Rank::Jack,
-            10 => Rank::Queen,
-            11 => Rank::King,
-            12 => Rank::Ace,
+            2 => Rank::Two,
+            3 => Rank::Three,
+            4 => Rank::Four,
+            5 => Rank::Five,
+            6 => Rank::Six,
+            7 => Rank::Seven,
+            8 => Rank::Eight,
+            9 => Rank::Nine,
+            10 => Rank::Ten,
+            11 => Rank::Jack,
+            12 => Rank::Queen,
+            13 => Rank::King,
+            14 => Rank::Ace,
             _ => panic!("Invalid rank"),
         }
     }
@@ -49,10 +49,10 @@ impl From<u8> for Rank {
 impl From<u8> for Suit {
     fn from(value: u8) -> Suit {
         match value {
-            0 => Suit::Clubs,
-            1 => Suit::Diamonds,
-            2 => Suit::Hearts,
-            3 => Suit::Spades,
+            1 => Suit::Clubs,
+            2 => Suit::Diamonds,
+            3 => Suit::Hearts,
+            4 => Suit::Spades,
             _ => panic!("Invalid suit"),
         }
     }
@@ -76,5 +76,11 @@ impl Card {
 
     pub fn index(&self) -> u8 {
         (self.0 >> 4) + ((self.0 & 0x0F) * 13)
+    }
+}
+
+impl ToString for Card {
+    fn to_string(&self) -> String {
+        format!("{:?} of {:?}", self.rank(), self.suit())
     }
 }

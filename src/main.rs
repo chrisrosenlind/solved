@@ -1,11 +1,10 @@
 mod cards;
 
-use cards::{Card, Hand, Rank, Suit};
+use cards::{Card, Deck, Hand, Rank, Suit};
 
 fn main() {
-    let hand = Hand::new(
-        Card::new(Rank::Ace, Suit::Diamonds),
-        Card::new(Rank::Ace, Suit::Hearts),
-    );
-    print!("{:?}", hand)
+    let deck = Deck::new();
+    for card in deck.cards {
+        println!("{:?}", card.to_string());
+    }
 }
