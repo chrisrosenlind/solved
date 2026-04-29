@@ -1,9 +1,10 @@
 #[derive(Debug)]
+#[repr(u8)]
 pub enum Suit {
-    Clubs = 0,
-    Diamonds = 1,
-    Hearts = 2,
-    Spades = 3,
+    Clubs,
+    Diamonds,
+    Hearts,
+    Spades,
 }
 
 #[derive(Debug)]
