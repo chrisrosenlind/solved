@@ -74,9 +74,9 @@ impl Card {
         Suit::from(self.0 & 0x0F)
     }
 
-    pub fn index(&self) -> u8 {
-        (self.0 >> 4) + ((self.0 & 0x0F) * 13)
-    }
+    // pub fn index(&self) -> u8 {
+    //     (self.0 >> 4) + ((self.0 & 0x0F) * 13)
+    // }
 }
 
 impl ToString for Card {
