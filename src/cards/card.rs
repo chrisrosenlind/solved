@@ -62,8 +62,8 @@ impl From<u8> for Suit {
 pub struct Card(u8);
 
 impl Card {
-    pub fn new(rank: Rank, suit: Suit) -> Card {
-        Card(((rank as u8) << 4) + (suit as u8))
+    pub fn new(rank: Rank, suit: Suit) -> Self {
+        Self(((rank as u8) << 4) + (suit as u8))
     }
 
     pub fn rank(&self) -> Rank {
